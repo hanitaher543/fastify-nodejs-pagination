@@ -1,6 +1,5 @@
 // IMPORTS
 const fastify = require('fastify')({ logger: true });
-const sequelize = require('/../config/config.js');
 const PORT = 3000;
 
 
@@ -22,8 +21,8 @@ fastify.register(require ('./routes/user'));
       console.log(`Server is running on port ${PORT}`);
       await sequelize.authenticate();
       console.log('Connection has been established successfully!!');
-      await sequelize.sync(); 
-      //await createInitialData();
+      //await sequelize.sync(); 
+ 
 
     } catch (error) {
       console.log(`Server failed to start on port ${PORT}`)
