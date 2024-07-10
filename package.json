@@ -1,0 +1,30 @@
+{
+  "name": "fastify-nodejs-pagination",
+  "version": "1.0.0",
+  "description": "Pagination server-side avec Node.js, Fastify, Sequelize, Postgres.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hanitaher543/fastify-nodejs-pagination.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hanitaher543/fastify-nodejs-pagination/issues"
+  },
+  "homepage": "https://github.com/hanitaher543/fastify-nodejs-pagination#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "nodemon": "^3.1.4",
+    "pg": "^8.12.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.3",
+    "sequelize-cli": "^6.6.2"
+  }
+}
