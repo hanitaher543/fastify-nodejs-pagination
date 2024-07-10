@@ -8,7 +8,7 @@ const Router = (fastify, options, done) =>{
 
     // API POST : Add new user 
 
-    fastify.post('/addUser', async (req, res) => {
+    fastify.post('/add', async (req, res) => {
 
         // Read data from request body
         const { fullname, email, password, telephone, address} = req.body;
@@ -16,7 +16,7 @@ const Router = (fastify, options, done) =>{
         //Using Try & Catch
         try{
 
-            //crypt password
+            //  crypt password
             const hashedPassword = await  bcrypt.hash(password, 10);
 
             //  Create instance from my model
