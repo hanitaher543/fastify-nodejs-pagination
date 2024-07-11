@@ -45,16 +45,30 @@ const Router = (fastify, options, done) =>{
 
     fastify.get('/getUsers', async (req, res) => {
 
+        // Read the number of page from the request query given by the user
+        const {page = 1} = req.query;
+        const limit = 3;
+        const offset = (page - 1) * limit;
+
         try{
-            const users = await User.findAll({
+          /*  const users = await User.findAll({
                 attributes: ["fullname", "email", "password", "telephone", "address"],
             });
             console.log(users)
-            res.status(200).send({message: 'User already exists in this database.', users});
+            res.status(200).send({message: 'User already exists in this database :', users}); */
+
+            const { count, rows} = await User.findAndCountAll({
+                limit,
+                offset,
+            });
+            return { count, rows };
+
+
 
         } catch(error)
         {
-             res.status(500).send({ message: error.message });
+            console.log('Error fetching users:', error);
+             res.status(500).send({ message: "Failed to fetch users."});
 
         }
     });
