@@ -1,4 +1,4 @@
-const User = require ('../models/user');
+const User   = require ('../models/user');
 const bcrypt = require ('bcrypt');
 
 
@@ -8,10 +8,11 @@ const Router = (fastify, options, done) =>{
 
     // API POST : Add new user 
 
-    fastify.post('/add', async (req, res) => {
+    fastify.post('/addUser', async (req, res) => {
 
         // Read data from request body
         const { fullname, email, password, telephone, address} = req.body;
+        console.log({fullname, email, password, telephone, address});
 
         //Using Try & Catch
         try{
@@ -32,7 +33,10 @@ const Router = (fastify, options, done) =>{
 
         } catch(error) {
 
-            res.status(500).send({error: 'User registration failed', details: error});
+            //res.status(500).send({error: 'User registration failed', details: error});
+
+            console.error('Error creating user:', error);
+            res.status(500).send({ error: 'Failed to create user' });
         }
     });
 
