@@ -41,6 +41,25 @@ const Router = (fastify, options, done) =>{
     });
 
 
+    //API GET : Get all users registered from database
+
+    fastify.get('/getUsers', async (req, res) => {
+
+        try{
+            const users = await User.findAll({
+                attributes: ["fullname", "email", "password", "telephone", "address"],
+            });
+            console.log(users)
+            res.status(200).send({message: 'User already exists in this database.', users});
+
+        } catch(error)
+        {
+             res.status(500).send({ message: error.message });
+
+        }
+    });
+
+
     //Running Router
     done();
 
